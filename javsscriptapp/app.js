@@ -11,10 +11,10 @@ console.log(userInput)
 
 translate.addEventListener("click", translateButton)
 
-var url="ggggggg"
+var serverURL = "https://api.funtranslations.com/translate/pirate.json";
 
 function constructURL(text){
-    return url+"?"+"text="+text
+    return serverURL+"?"+"text="+text
 }
 function errorHandler(error
 ){ alert("try after some time")}
@@ -26,10 +26,9 @@ function translateButton(){
   var userInputText=userInput.value
   console.log(userInputText,typeof(userInputText))
 
-  .fetch(constructURL(userInputText))
-  .then(response=>response.json)
-  .then(json=>console.log(json))
-  .then(json=>{output.innerHTML=json.content.translated})
+  fetch(constructURL(userInputText))
+  .then(response=>response.json())
+  .then(json=>{output.innerHTML=json.contents.translated})
   .catch(errorHandler)
 
 
